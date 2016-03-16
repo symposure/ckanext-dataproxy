@@ -24,6 +24,7 @@ The resource is also accessible at api/3/action/datastore_search regardless if d
 Installing
 -------
 __NB! This module is developed for CKAN v2.5, compatibility with other version is not ensured__
+
 1) Clone this repo  
 
 ```sh
@@ -78,8 +79,11 @@ ckan.views.default_views = image_view ... dataproxy_view
 Tests
 -------
 TODO: No unit-tests currently
+
 TODO: Implement access checks at overriden datastore_search api endpoint
+
 TODO: Rename module to ckanext-database_proxy to avoid confusion with dataproxy module
+
 TODO: Implement view filters for dataproxy resources (currently adding filters is disabled)
 
 Known bugs
