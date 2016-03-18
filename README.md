@@ -29,7 +29,7 @@ __NB! This module is developed for CKAN v2.5, compatibility with other version i
 
 ```sh
 cd /usr/lib/ckan/default/src
-git clone https://github.com/cphsolutionslab/ckanext-dataproxy.git
+git clone https://github.com/symposure/ckanext-dataproxy.git
 cd ckanext-dataproxy
 ```
 
