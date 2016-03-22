@@ -2,8 +2,10 @@ import urllib
 import json
 import decimal
 import datetime
+import time
 import pylons
 import re
+import logging
 from ckan.controllers.api import ApiController
 import ckan.logic as logic
 from sqlalchemy import *
@@ -11,6 +13,8 @@ from ckan.model import Resource, meta
 from collections import OrderedDict
 from simplecrypt import decrypt
 from binascii import unhexlify
+
+log = logging.getLogger(__name__)
 
 def alchemyencoder(obj):
     """JSON encoder function for SQLAlchemy special classes."""
@@ -88,7 +92,10 @@ class SearchController(ApiController):
         
         conn = engine.connect()
         query = text(sql)
+
+        start = time.time()
         result = conn.execute(query)
+        log.info(' Query took %.3f seconds to run' % (time.time() - start))
 
         queried_fields = result.keys()
         #Filter out fields that were not in the SQL query
@@ -182,7 +189,9 @@ class SearchController(ApiController):
         #     table_fields = self._get_fields(select_query.columns.items)
 
 
+        start = time.time()
         result = conn.execute(select_query)
+        log.info(' Query took %.3f seconds to run' % (time.time() - start))
 
         
         records = list()
