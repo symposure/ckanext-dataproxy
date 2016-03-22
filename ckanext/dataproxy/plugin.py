@@ -45,13 +45,6 @@ class DataProxyPlugin(p.SingletonPlugin):
     p.implements(p.IRoutes, inherit=True)
     p.implements(p.IResourceController, inherit=True)
     
-    def before_show(self, resource_dict):
-        ''' IResourceController '''
-        if 'db_password' in resource_dict:
-            #Remove db_password from display fields (although it's encrypted)
-            resource_dict.pop('db_password')
-        return resource_dict
-    
     def update_config(self, config):
         ''' IConfigurer '''
         # Add this plugin's templates dir to CKAN's extra_template_paths, so
